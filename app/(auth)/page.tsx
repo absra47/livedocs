@@ -1,10 +1,13 @@
 import { Button } from "@/components/ui/button";
+import { SignUp } from "@clerk/nextjs";
 import React from "react";
 
 const Home = () => {
   return (
     <div>
-      <Button>click me </Button>
+      <main className="auth-page">
+        <SignUp />
+      </main>
     </div>
   );
 };
