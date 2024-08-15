@@ -33,11 +33,11 @@ export const getDOcument = async ({
 }) => {
   try {
     const room = await liveblocks.getRoom(roomId);
-    // const hasAccess = Object.keys(room.usersAccesses).includes(userId);
+    const hasAccess = Object.keys(room.usersAccesses).includes(userId);
 
-    // if (!hasAccess) {
-    //   throw new Error("You do not have access to this documnet");
-    // }
+    if (!hasAccess) {
+      throw new Error("You do not have access to this documnet");
+    }
     return parseStringify(room);
   } catch (error) {
     console.log(`Error happend while getting a room ${error}`);

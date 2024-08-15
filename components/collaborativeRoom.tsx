@@ -9,6 +9,7 @@ import { Input } from "./ui/input";
 import Image from "next/image";
 
 import { updateDocument } from "@/lib/actions/room.actions";
+import Loader from "./Loader";
 const CollaborativeRoom = ({
   roomId,
   roomMetadata,
@@ -21,6 +22,7 @@ const CollaborativeRoom = ({
   const [loading, setLoading] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLDivElement>(null);
+
   const updateTitleHandler = async (
     e: React.KeyboardEvent<HTMLInputElement>
   ) => {
@@ -64,7 +66,7 @@ const CollaborativeRoom = ({
 
   return (
     <RoomProvider id={roomId}>
-      <ClientSideSuspense fallback={<div>Loading…</div>}>
+      <ClientSideSuspense fallback={<div>{<Loader />}</div>}>
         <div className="collaborative-room">
           <Header>
             <div
